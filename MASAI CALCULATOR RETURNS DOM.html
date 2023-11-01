@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Masai Calculator</title>
+    <style>
+        #mc {
+            text-align: center;
+            font-weight: bold;
+            color: teal;
+            font-size: 65px;
+            margin: 30px;
+        }
+
+        #head {
+            width:26%;
+            /* border: 5px solid black; */
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(4,80px);
+            grid-auto-rows:80px;
+            gap: 15px;
+            justify-content: center;
+            padding:3% 0 4% 0;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            /* border-radius: 10px; */
+        }
+
+        #head>button {
+            /* border: 3px solid red; */
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+            text-align: center;
+            padding: 30px;
+            font-weight: bold;
+            border-radius: 10px;
+            font-size: 25px;
+
+        }
+
+        #head>button:nth-child(1) {
+            grid-column-start: 1;
+            grid-column-end: 5;
+        }
+        .blacky{
+            background-color: black;
+            color: white;
+        }
+        .koki{
+            color: white;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="mc">Masai Calculator</div>
+    <br><br><br>
+    <div id="head">
+        <button id="display"></button>
+        
+        <button>1</button>
+
+        <button>2</button>
+
+        <button>3</button>
+
+        <button class="blacky">+</button>
+
+        <button>4</button>
+
+        <button>5</button>
+
+        <button>6</button>
+
+        <button class="blacky">-</button>
+
+        <button>7</button>
+
+        <button>8</button>
+
+        <button>9</button>
+
+        <button class="blacky">X</button>
+
+        <button class="koki">C</button>
+
+        <button>0</button>
+
+        <button class="blacky">=</button>
+
+        <button class="blacky">/</button>
+    </div>
+</body>
+
+
+
+</html>
+
+<script>
+    let display = document.getElementById("display");
+    let firstNumber = "";
+    let operator = "";
+    let secondNumber = "";
+
+    document.querySelectorAll('#head > button').forEach(button => {
+        button.addEventListener('click', function() {
+            const buttonText = button.innerText;
+
+            if (button.classList.contains('koki')) {
+                display.innerText = "";
+                firstNumber = "";
+                operator = "";
+                secondNumber = "";
+            } else if (button.classList.contains('blacky')) {
+                if (firstNumber && operator) {
+                    secondNumber = display.innerText;
+                    display.innerText = "";
+                    calculate();
+                    operator = buttonText;
+                    firstNumber = display.innerText;
+                } else {
+                    operator = buttonText;
+                    firstNumber = display.innerText;
+                    display.innerText = "";
+                }
+            } else if (buttonText === "=") {
+                if (firstNumber && operator && display.innerText) {
+                    secondNumber = display.innerText;
+                    calculate();
+                    operator = "";
+                }
+            } else {
+                display.innerText += buttonText;
+            }
+        });
+    });
+
+    function calculate() {
+        let result;
+        const num1 = parseFloat(firstNumber);
+        const num2 = parseFloat(secondNumber);
+
+        switch (operator) {
+            case '+':
+                result = num1 + num2;
+                break;
+            case '-':
+                result = num1 - num2;
+                break;
+            case 'X':
+                result = num1 * num2;
+                break;
+            case '/':
+                if (num2 !== 0) {
+                    result = num1 / num2;
+                } else {
+                    result = "Cannot divide by zero";
+                }
+                break;
+            default:
+                result = "Error";
+        }
+
+        display.innerText = result;
+    }
+</script>
