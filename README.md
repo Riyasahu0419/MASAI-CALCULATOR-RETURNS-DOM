@@ -20,7 +20,7 @@ MASAI-CALCULATOR-RETURNS-DOM is a simple, web-based calculator application desig
 
 ### Prerequisites
 
-To run this project, you need a web browser. No additional installations are required.
+### To run this project, you need a web browser. No additional installations are required.
 
 ### Installation
 
@@ -42,10 +42,10 @@ or
 double-click index.html
 ```
 ### Usage
--Click on the number buttons (0-9) to input digits.
--Click on the operation buttons (+, -, *, /) to perform calculations.
--Click the = button to display the result.
--Click the C button to clear the current input and start over.
+- Click on the number buttons (0-9) to input digits.
+- Click on the operation buttons (+, -, *, /) to perform calculations.
+- Click the = button to display the result.
+- Click the C button to clear the current input and start over.
 ## Project Structure
 
 ```
@@ -54,15 +54,15 @@ MASAI-CALCULATOR-RETURNS-DOM/
 ├── styles.css
 └── script.js
 ```
--index.html: Contains the HTML structure of the calculator.
--styles.css: Contains the CSS styles for the calculator.
--script.js: Contains the JavaScript code to handle calculator logic and DOM manipulation.
+- index.html: Contains the HTML structure of the calculator.
+- styles.css: Contains the CSS styles for the calculator.
+- script.js: Contains the JavaScript code to handle calculator logic and DOM manipulation.
 
 
 
 ## Steps to Contribute
 1.Fork the repository.
--Create a new branch:
+- Create a new branch:
 
 ```
 git checkout -b feature/your-feature-name
